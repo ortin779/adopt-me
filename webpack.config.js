@@ -31,4 +31,11 @@ module.exports = {
   optimization: {
     minimize: false,
   },
+  devServer: {
+    static: path.join(__dirname, "dist"),
+    compress: false,
+    port: 3000,
+    hot: false,
+    
+  },
 };
