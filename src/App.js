@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { StrictMode } from "react";
 import { SearchParams } from "./SearchParms";
 import { Details } from "./pages/Details";
@@ -7,15 +7,19 @@ import "./style.css";
 
 const App = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <div>
         <h1>Adopt Me!</h1>
-        <Routes>
-          <Route path="/" element={<SearchParams />} />
-          <Route path="/details/:id" element={<Details />} />
-        </Routes>
+        <Switch>
+          <Route path="/" exact>
+            <SearchParams />
+          </Route>
+          <Route path="/details/:id">
+            <Details />
+          </Route>
+        </Switch>
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

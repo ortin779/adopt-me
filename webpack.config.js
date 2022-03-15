@@ -6,6 +6,7 @@ module.exports = {
   entry: path.join(__dirname, "src", "App.js"),
   output: {
     path: path.resolve(__dirname, "dist"),
+    publicPath:"/"
   },
   module: {
     rules: [
@@ -32,7 +33,7 @@ module.exports = {
     minimize: false,
   },
   devServer: {
-    static: path.join(__dirname, "dist"),
+    static: "./dist",
     compress: true,
     port: 3000,
     hot: true,
