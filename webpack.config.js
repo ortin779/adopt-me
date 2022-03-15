@@ -5,7 +5,7 @@ module.exports = {
   mode: "development",
   entry: path.join(__dirname, "src", "App.js"),
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
@@ -33,9 +33,9 @@ module.exports = {
   },
   devServer: {
     static: path.join(__dirname, "dist"),
-    compress: false,
+    compress: true,
     port: 3000,
-    hot: false,
-    
+    hot: true,
+    historyApiFallback:true
   },
 };
