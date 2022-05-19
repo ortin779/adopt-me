@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom";
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import { StrictMode } from "react";
-import { SearchParams } from "./components/SearchParms";
-import { Details } from "./components/Details";
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import { SearchParams } from "./components/SearchParms.jsx";
+import Details  from "./components/Details.jsx";
 import "./style.css";
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
     <BrowserRouter>
       <header>
         <Link to={"/"}>
-          <h1>Adopt Me!</h1>
+          <h1>Adoptt Me!</h1>
         </Link>
       </header>
       <div>

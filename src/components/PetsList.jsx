@@ -1,4 +1,4 @@
-import { Pet } from "./Pet";
+import { Pet } from "./Pet.jsx";
 
 export const PetsList = (props) => {
   return (

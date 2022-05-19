@@ -1,9 +1,10 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const config = require('./config/config.js')
 
 module.exports = {
   mode: "development",
-  entry: path.join(__dirname, "src", "App.js"),
+  entry: path.join(__dirname, "src", "App.jsx"),
   output: {
     path: path.resolve(__dirname, "dist"),
     publicPath:"/"
@@ -22,7 +23,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"],
+    extensions: [".js", ".jsx"],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -35,7 +36,7 @@ module.exports = {
   devServer: {
     static: "./dist",
     compress: true,
-    port: 3000,
+    port: config.PORT || 3000,
     hot: true,
     historyApiFallback:true
   },
