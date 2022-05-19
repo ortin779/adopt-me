@@ -6,17 +6,19 @@ export const useBreedList = (animal) => {
 
   useEffect(() => {
     setStatus("loading");
+
+    async function requestBreeds() {
+      const response = await fetch(
+        `http://pets-v2.dev-apis.com/breeds?animal=${animal}`
+      );
+      const jsonResponse = await response.json();
+      setBreedList(jsonResponse.breeds ?? []);
+    }
+
     if (animal === "") {
       setBreedList([]);
     } else {
       requestBreeds();
-      async function requestBreeds() {
-        const response = await fetch(
-          `http://pets-v2.dev-apis.com/breeds?animal=${animal}`
-        );
-        const jsonResponse = await response.json();
-        setBreedList(jsonResponse.breeds ?? []);
-      }
     }
   }, [animal]);
 

@@ -3,10 +3,11 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:import/recommended",
-        "prettier"
+        "plugin:prettier/recommended"
     ],
     "plugins": [
         "react",
+        "prettier",
         "import"
     ],
     "parserOptions": {

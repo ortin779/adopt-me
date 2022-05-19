@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom";
 import { StrictMode } from "react";
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import { Route, Routes, BrowserRouter, Link } from "react-router-dom";
 import { SearchParams } from "./components/SearchParms.jsx";
-import Details  from "./components/Details.jsx";
+import Details from "./components/Details.jsx";
 import "./style.css";
 
 const App = () => {
@@ -10,18 +10,14 @@ const App = () => {
     <BrowserRouter>
       <header>
         <Link to={"/"}>
-          <h1>Adoptt Me!</h1>
+          <h1>Adopt Me!</h1>
         </Link>
       </header>
-      <div>
-        <Switch>
-          <Route path="/" exact>
-            <SearchParams />
-          </Route>
-          <Route path="/details/:id">
-            <Details />
-          </Route>
-        </Switch>
+      <div style={{ height: "calc(100% - 136px)" }}>
+        <Routes>
+          <Route path="/" element={<SearchParams />} index />
+          <Route path="/details/:id" element={<Details />} />
+        </Routes>
       </div>
     </BrowserRouter>
   );

@@ -2,8 +2,15 @@
     box-sizing: border-box;
     color: #333;
   }
-  
+  #root{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+  }
+
   body {
+    height: 100%;
+    width: 100%;
     background-color: #81a69b;
     background-image: url(http://pets-images.dev-apis.com/pets/wallpaperB.jpg);
     margin: 0;
@@ -272,10 +279,9 @@
   
     .details {
       width: 95%;
-      margin: 0 auto;
       padding: 15px;
       border-radius: 9px;
-      margin-bottom: 25px;
+      margin: 0 auto 25px;
     }
   
     .info {

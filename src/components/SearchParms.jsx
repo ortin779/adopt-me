@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useBreedList } from "../hooks/useBreedList";
+import { useBreedList } from "../hooks/useBreedList.js";
 import { PetsList } from "./PetsList.jsx";
 
 const ANIMALS = ["cat", "rat", "dog", "bird", "reptile"];
@@ -22,7 +22,6 @@ export const SearchParams = () => {
 
     const jsonResponse = await resp.json();
 
-    console.log(jsonResponse);
     setPets(jsonResponse.pets);
   };
 
@@ -32,8 +31,8 @@ export const SearchParams = () => {
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
-    console.log(e.target.location.value);
   };
+
   return (
     <div className="search-params">
       <form onSubmit={handleFormSubmission}>
