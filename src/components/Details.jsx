@@ -2,12 +2,16 @@ import { Component } from "react";
 import { Carousel } from "./Carousel.jsx";
 import { Spinner } from "./common/Spinner.jsx";
 import { useParams } from "react-router-dom";
+import { ThemeContext } from "../contexts/ThemeContext";
+import { Modal } from "./Modal";
 
 class Details extends Component {
   constructor(props) {
     super(props);
+    this.toggleModal = this.toggleModal.bind(this);
     this.state = {
       isLoading: true,
+      showModal: false,
     };
   }
 
@@ -21,8 +25,8 @@ class Details extends Component {
     this.setState({ isLoading: false, ...jsonResponse.pets[0] });
   }
 
-  async componentDidUpdate() {
-    this.render();
+  toggleModal() {
+    this.setState({ showModal: !this.state.showModal });
   }
 
   render() {
@@ -30,17 +34,39 @@ class Details extends Component {
       return <Spinner />;
     }
 
-    const { animal, breed, city, state, name, description, images } =
+    const { animal, breed, city, state, name, description, images, showModal } =
       this.state;
-    console.log(this.state);
     return (
       <div className="details">
         <Carousel images={images} />
         <div>
           <h1>{name}</h1>
           <h2>{`${animal} - ${breed} - ${city} - ${state}`}</h2>
-          <button>Adopt {name}</button>
+          <ThemeContext.Consumer
+            /* eslint-disable-next-line react/no-children-prop */
+            children={([theme]) => (
+              <button
+                onClick={this.toggleModal}
+                style={{ backgroundColor: theme }}
+              >
+                Adopt {name}
+              </button>
+            )}
+          />
           <p>{description}</p>
+          {showModal && (
+            <Modal onClose={this.toggleModal}>
+              <div>
+                <h1>Do you wanna adapt {name}??</h1>
+                <div className={"buttons"}>
+                  <a href={"https://bit.ly/pet-adopt"}>
+                    <button>Yes</button>
+                  </a>
+                  <button onClick={this.toggleModal}>NO</button>
+                </div>
+              </div>
+            </Modal>
+          )}
         </div>
       </div>
     );
