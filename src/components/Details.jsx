@@ -4,6 +4,7 @@ import { Spinner } from "./common/Spinner.jsx";
 import { useParams } from "react-router-dom";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { Modal } from "./Modal";
+import { ErrorBoundary } from "../ErrorBoundary";
 
 class Details extends Component {
   constructor(props) {
@@ -75,7 +76,11 @@ class Details extends Component {
 
 const DetailsWrapper = () => {
   const params = useParams();
-  return <Details params={params} />;
+  return (
+    <ErrorBoundary>
+      <Details params={params} />
+    </ErrorBoundary>
+  );
 };
 
 export default DetailsWrapper;
